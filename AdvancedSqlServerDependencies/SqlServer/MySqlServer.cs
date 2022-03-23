@@ -331,7 +331,7 @@ namespace AdvancedSqlServerDependencies.SqlServer
                                 State = (string)rdr["state_desc"],
                                 UserHasDbAccess = (bool)rdr["has_db_access"],
                                 CompatibilityLevel = Convert.ToInt32(rdr["compatibility_level"]),
-                                CollationName = (string)rdr["collation_name"],
+                                CollationName = (string)(rdr["collation_name"] == DBNull.Value ? "Unknown" : rdr["collation_name"]),
                                 RecoveryModel = (string)rdr["recovery_model_desc"]
                             });
                         }
