@@ -1,0 +1,222 @@
+﻿declare @tsql_dependencies varchar(max)
+declare @tsql_objects varchar(max)
+declare @tsql_synonyms varchar(max)
+declare @db_name varchar(200)
+declare @db_id int
+declare @object_name varchar(max)
+declare @database_names varchar(max)
+declare @db_count smallint
+declare @exact_object_name bit
+
+set @database_names = '!DATABASE_NAMES_TO_BE_REPLACED!'
+set @object_name = '!OBJECT_NAME_TO_BE_REPLACED!'
+
+-- ============================================================================================================================
+print 'Dropping global temporary databases...'
+-- ============================================================================================================================
+
+IF OBJECT_ID('tempdb..##objectdep_dependencies') IS NOT NULL DROP TABLE ##objectdep_dependencies
+IF OBJECT_ID('tempdb..##objectdep_objects') IS NOT NULL DROP TABLE ##objectdep_objects
+IF OBJECT_ID('tempdb..##objectdep_synonyms') IS NOT NULL DROP TABLE ##objectdep_synonyms
+IF OBJECT_ID('tempdb..##objectdep_db_names') IS NOT NULL DROP TABLE ##objectdep_db_names
+
+-- ============================================================================================================================
+print 'Creating global temporary tables...'
+-- ============================================================================================================================
+
+create table ##objectdep_dependencies 
+(
+	DatabaseId int not null,
+	DatabaseName varchar(200) not null,
+	ParentId int not null,
+	ChildId int null
+)
+
+create table ##objectdep_objects
+(
+	DatabaseId int not null,
+	DatabaseName varchar(200) not null,
+	ObjectId int not null,
+	SchemaName varchar(256) not null,
+	ObjectName varchar(256) not null,
+	ObjectType varchar(120) not null,
+	FullObjectName varchar(712) not null
+)
+
+create table ##objectdep_synonyms
+(
+	DatabaseId int not null,
+	DatabaseName varchar(200) not null,
+	ObjectId int not null,
+	BaseObjectName varchar(2070) not null
+)
+
+create table ##objectdep_db_names
+(
+	DatabaseName varchar(200) not null
+)
+
+
+-- ============================================================================================================================
+print 'Initializing databases...'
+-- ============================================================================================================================
+;WITH lv0 (N) AS (SELECT 1 g UNION ALL SELECT 1)
+    ,lv1 (N) AS (SELECT 1 g FROM lv0 a CROSS JOIN lv0 b) -- 4
+    ,lv2 (N) AS (SELECT 1 g FROM lv1 a CROSS JOIN lv1 b) -- 16
+    ,lv3 (N) AS (SELECT 1 g FROM lv2 a CROSS JOIN lv2 b) -- 256
+    ,lv4 (N) AS (SELECT 1 g FROM lv3 a CROSS JOIN lv3 b) -- 65,536
+    ,tally (N) AS (SELECT TOP (ISNULL(DATALENGTH(@database_names),0)) ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) FROM lv4)
+    ,start (N1) as (SELECT 1 UNION ALL SELECT t.N+1 FROM tally t WHERE SUBSTRING(@database_names,t.N,1) = ',')
+    ,lenn (N1, L1) as (SELECT s.N1, ISNULL(NULLIF(CHARINDEX(',',@database_names,s.N1),0)-s.N1,8000) FROM start s)
+
+insert into ##objectdep_db_names(DatabaseName)
+SELECT --ROW_NUMBER() OVER(ORDER BY l.N1),
+		SUBSTRING(@database_names, l.N1, l.L1) as Item
+FROM lenn l
+order by 1
+
+-- ============================================================================================================================
+print 'Initializing queries...'
+-- ============================================================================================================================
+
+set @tsql_dependencies = 'insert into ##objectdep_dependencies(DatabaseId, DatabaseName, ParentId, ChildId)'
+set @tsql_objects = 'insert into ##objectdep_objects(DatabaseId, DatabaseName, ObjectId, SchemaName, ObjectName, ObjectType, FullObjectName)'
+set @tsql_synonyms = 'insert into ##objectdep_synonyms(DatabaseId, DatabaseName, ObjectId, BaseObjectName)'
+
+DECLARE db_cursor CURSOR FOR 
+select database_id, name
+from sys.databases D
+inner join ##objectdep_db_names DBN on D.name = DBN.DatabaseName
+
+OPEN db_cursor
+
+FETCH NEXT FROM db_cursor INTO @db_id, @db_name
+
+set @db_count = 0
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	if @db_count > 0
+	begin
+		set @tsql_dependencies = @tsql_dependencies + ' union all '
+		set @tsql_objects = @tsql_objects + ' union all '
+		set @tsql_synonyms = @tsql_synonyms + ' union all '
+	end
+	
+	set @tsql_dependencies = @tsql_dependencies + ' select ' + cast(@db_id as varchar(20)) + ', ''' + @db_name + ''', referencing_id, referenced_id from [' + @db_name + '].[sys].[sql_expression_dependencies]'
+	set @tsql_objects = @tsql_objects + 'select ' + cast(@db_id as varchar(20)) + ', ''' + @db_name + ''', O.[object_id], S.name, O.name, O.type_desc, ''[' + @db_name + '].['' + S.name + ''].['' + O.name + '']'' as FullObjectName from [' + @db_name + '].[sys].[objects] O inner join [' + @db_name + '].[sys].[schemas] S on S.schema_id = O.schema_id'
+	set @tsql_synonyms = @tsql_synonyms + 'select ' + cast(@db_id as varchar(20)) +', ''' + @db_name + ''', object_id, base_object_name from [' + @db_name + '].[sys].[synonyms]'
+
+	FETCH NEXT FROM db_cursor INTO @db_id, @db_name
+	set @db_count = @db_count + 1
+END
+close db_cursor
+deallocate db_cursor
+
+-- ===============
+-- Populate tables
+-- ===============
+if @db_count > 0
+begin
+	-- ============================================================================================================================
+	print 'Populating dependencies...'
+	-- ============================================================================================================================
+	exec(@tsql_dependencies)
+
+	-- ============================================================================================================================
+	print 'Populating objects...'
+	-- ============================================================================================================================
+	exec(@tsql_objects)
+
+	-- ============================================================================================================================
+	print 'Populating synonyms...'
+	-- ============================================================================================================================
+	exec(@tsql_synonyms)
+end
+
+
+
+--CREATE NONCLUSTERED INDEX [objectdep_IX1] ON [dbo].[##objectdep_objects] ([DatabaseName],[ObjectId]) INCLUDE ([ObjectType],[FullObjectName])
+
+-- ============================================================================================================================
+print 'Creating index (1/2)...'
+-- ============================================================================================================================
+CREATE NONCLUSTERED INDEX [IX1] ON [dbo].[##objectdep_objects] ([DatabaseId],[ObjectId]) INCLUDE ([ObjectType],[FullObjectName])
+
+-- ============================================================================================================================
+print 'Creating index (2/2)...'
+-- ============================================================================================================================
+CREATE NONCLUSTERED INDEX [IX2] ON [dbo].[##objectdep_objects] ([FullObjectName]) INCLUDE ([ObjectId],[ObjectType])
+
+
+-- ============================================================================================================================
+print 'Discovering dependencies...'
+-- ============================================================================================================================
+;with cte as
+(
+	select  PARENT_OBJECT.DatabaseId as ParentDatabaseId,
+			PARENT_OBJECT.DatabaseName as ParentDatabaseName,
+			PARENT_OBJECT.SchemaName as ParentSchemaName,
+			PARENT_OBJECT.ObjectId as ParentObjectId,
+			PARENT_OBJECT.ObjectName as ParentObjectName,
+			PARENT_OBJECT.ObjectType as ParentObjectType,
+			PARENT_OBJECT.FullObjectName as ParentFullObjectName,
+			
+			isnull(CHILD_OBJECT.DatabaseId, BASE_PARENT_OBJECT.DatabaseId) as ChildDatabaseId,
+			isnull(CHILD_OBJECT.DatabaseName, BASE_PARENT_OBJECT.DatabaseName) as ChildDatabaseName,
+			isnull(CHILD_OBJECT.SchemaName, BASE_PARENT_OBJECT.SchemaName) as ChildSchemaName,
+			isnull(CHILD_OBJECT.ObjectId, BASE_PARENT_OBJECT.ObjectId) as ChildObjectId,
+			isnull(CHILD_OBJECT.ObjectName, BASE_PARENT_OBJECT.ObjectName) as ChildObjectName,
+			isnull(CHILD_OBJECT.ObjectType, BASE_PARENT_OBJECT.ObjectType) as ChildObjectType,	
+			isnull(CHILD_OBJECT.FullObjectName, BASE_PARENT_OBJECT.FullObjectName) as ChildFullObjectName
+
+	from ##objectdep_objects PARENT_OBJECT
+
+	left join ##objectdep_dependencies DEP
+		on PARENT_OBJECT.DatabaseId = DEP.DatabaseId
+		and PARENT_OBJECT.ObjectId = DEP.ParentId
+		and PARENT_OBJECT.ObjectType <> 'SYNONYM'
+
+	left join ##objectdep_objects CHILD_OBJECT
+		on CHILD_OBJECT.DatabaseId = DEP.DatabaseId
+		and CHILD_OBJECT.ObjectId = DEP.ChildId	
+		
+	left join ##objectdep_synonyms SYN_PARENT
+		on SYN_PARENT.DatabaseId = PARENT_OBJECT.DatabaseId
+		and SYN_PARENT.ObjectId = PARENT_OBJECT.ObjectId
+		and PARENT_OBJECT.ObjectType = 'SYNONYM'
+
+	left join ##objectdep_objects BASE_PARENT_OBJECT
+		on BASE_PARENT_OBJECT.FullObjectName = SYN_PARENT.BaseObjectName
+			
+	where coalesce(CHILD_OBJECT.ObjectId, BASE_PARENT_OBJECT.ObjectId, null) is not null
+)
+, result_cte as
+(
+	select 0 as [Level], *
+	from cte
+	where ParentObjectName like @object_name	
+
+	union all
+	
+	select R.[Level] + 1 as [Level], C.*
+	from cte C
+	inner join result_cte R on C.ParentFullObjectName = R.ChildFullObjectName
+)
+
+select *
+from result_cte
+order by [Level]
+OPTION (MAXRECURSION 32767)
+
+-- ============================================================================================================================
+print 'Dropping global temporary tables...'
+-- ============================================================================================================================
+
+IF OBJECT_ID('tempdb..##objectdep_dependencies') IS NOT NULL DROP TABLE ##objectdep_dependencies
+IF OBJECT_ID('tempdb..##objectdep_objects') IS NOT NULL DROP TABLE ##objectdep_objects
+IF OBJECT_ID('tempdb..##objectdep_synonyms') IS NOT NULL DROP TABLE ##objectdep_synonyms
+IF OBJECT_ID('tempdb..##objectdep_db_names') IS NOT NULL DROP TABLE ##objectdep_db_names
+
+-- ============================================================================================================================
+print 'Query completed.'
+-- ============================================================================================================================

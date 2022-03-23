@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Relation_8467.ico</ApplicationIcon>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://advancedsqlserverdependencies.codeplex.com/releases/clickonce/</InstallUrl>
+    <SupportUrl>https://advancedsqlserverdependencies.codeplex.com/</SupportUrl>
+    <ErrorReportUrl>https://advancedsqlserverdependencies.codeplex.com/workitem/list/basic</ErrorReportUrl>
+    <ProductName>Advanced SQL Server Dependencies</ProductName>
+    <PublisherName>Knyazs</PublisherName>
+    <ApplicationRevision>15</ApplicationRevision>
+    <ApplicationVersion>2.6.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>918B2F0E2129754E9AEACD5D47138BFD5CE23AC3</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AdvancedSqlServerDependencies_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{83C65CEA-525E-4C5F-AE7B-2973CF14B66B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdvancedSqlServerDependencies</RootNamespace>
+    <AssemblyName>AdvancedSqlServerDependencies</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AeroWizard, Version=2.1.7.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.1.7\lib\net40\AeroWizard.dll</HintPath>
+    </Reference>
+    <Reference Include="ControlzEx, Version=2.0.1.61, Culture=neutral, PublicKeyToken=f08b075e934b7045, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.2.0.1.61\lib\net40\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Fluent, Version=4.0.3.394, Culture=neutral, PublicKeyToken=3e436e32a8c5546f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fluent.Ribbon.4.0.3.394\lib\net40\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI">
+      <HintPath>..\packages\DataConnectionDialog.1.2\Lib\Microsoft.Data.ConnectionUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.ConnectionUI.Dialog">
+      <HintPath>..\packages\DataConnectionDialog.1.2\Lib\Microsoft.Data.ConnectionUI.Dialog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.0.25611, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.0\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.2.0.1.61\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.9.0.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.2.9.0.0\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\Watermark\CueComboBox.cs" />
+    <Compile Include="Components\Watermark\WatermarkComboBox.cs" />
+    <Compile Include="Components\Watermark\WaterMarkTextBox.cs" />
+    <Compile Include="CustomOutput\MyOutputMessage.cs" />
+    <Compile Include="DockForms\TopObjectsDockForm.cs" />
+    <Compile Include="DockForms\TopObjectsDockForm.Designer.cs">
+      <DependentUpon>TopObjectsDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServer\ConnectionPool.cs" />
+    <Compile Include="SqlServer\Metadata\MySqlDatabase.cs" />
+    <Compile Include="SqlServer\Metadata\MySqlServerObject.cs" />
+    <Compile Include="SqlServer\QueryReader.cs" />
+    <Compile Include="DockForms\SqlServerPropertiesDockForm.cs" />
+    <Compile Include="DockForms\SqlServerPropertiesDockForm.Designer.cs">
+      <DependentUpon>SqlServerPropertiesDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\StartDockForm.cs" />
+    <Compile Include="DockForms\StartDockForm.Designer.cs">
+      <DependentUpon>StartDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FindFormSimple.cs" />
+    <Compile Include="Forms\FindFormSimple.Designer.cs">
+      <DependentUpon>FindFormSimple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewDependencyCheckWizard.cs" />
+    <Compile Include="Forms\NewDependencyCheckWizard.Designer.cs">
+      <DependentUpon>NewDependencyCheckWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options\OptionsAppearancePanel.cs" />
+    <Compile Include="Forms\Options\OptionsAppearancePanel.Designer.cs">
+      <DependentUpon>OptionsAppearancePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options\OptionsDatabasePanel.cs" />
+    <Compile Include="Forms\Options\OptionsDatabasePanel.Designer.cs">
+      <DependentUpon>OptionsDatabasePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options\OptionsForm.cs" />
+    <Compile Include="Forms\Options\OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ProgressForm.cs" />
+    <Compile Include="Forms\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RateAppForm.cs" />
+    <Compile Include="Forms\RateAppForm.Designer.cs">
+      <DependentUpon>RateAppForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\InvalidDatabaseReferencesForm.cs" />
+    <Compile Include="Forms\InvalidDatabaseReferencesForm.Designer.cs">
+      <DependentUpon>InvalidDatabaseReferencesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TestFOrm.cs" />
+    <Compile Include="Forms\TestFOrm.Designer.cs">
+      <DependentUpon>TestFOrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\ChildrenSummaryDockForm.cs" />
+    <Compile Include="DockForms\ChildrenSummaryDockForm.Designer.cs">
+      <DependentUpon>ChildrenSummaryDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\DatabaseBrowserDockForm.cs" />
+    <Compile Include="DockForms\DatabaseBrowserDockForm.Designer.cs">
+      <DependentUpon>DatabaseBrowserDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\DataPreviewDockForm.cs" />
+    <Compile Include="DockForms\DataPreviewDockForm.Designer.cs">
+      <DependentUpon>DataPreviewDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\DependencyBrowserDockForm.cs" />
+    <Compile Include="DockForms\DependencyBrowserDockForm.Designer.cs">
+      <DependentUpon>DependencyBrowserDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\ObjectDefinitionDockForm.cs" />
+    <Compile Include="DockForms\ObjectDefinitionDockForm.Designer.cs">
+      <DependentUpon>ObjectDefinitionDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\OutputDockForm.cs" />
+    <Compile Include="DockForms\OutputDockForm.Designer.cs">
+      <DependentUpon>OutputDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DockForms\PropertiesDockForm.cs" />
+    <Compile Include="DockForms\PropertiesDockForm.Designer.cs">
+      <DependentUpon>PropertiesDockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Excel.cs" />
+    <Compile Include="Forms\ExceptionForm.cs" />
+    <Compile Include="Forms\ExceptionForm.Designer.cs">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainFormMDI.cs" />
+    <Compile Include="Forms\MainFormMDI.Designer.cs">
+      <DependentUpon>MainFormMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewDependencyCheckForm.cs" />
+    <Compile Include="Forms\NewDependencyCheckForm.Designer.cs">
+      <DependentUpon>NewDependencyCheckForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RecommendedDatabasesForm.cs" />
+    <Compile Include="Forms\RecommendedDatabasesForm.Designer.cs">
+      <DependentUpon>RecommendedDatabasesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomOutput\MyOutput.cs" />
+    <Compile Include="Progress\DependencyBackgroundWorkerResult.cs" />
+    <Compile Include="Progress\LongRunningOperation.cs" />
+    <Compile Include="Progress\LongRunningOperationManager.cs" />
+    <Compile Include="MySqlObjects\MySqlObjectLists\MySqlObjectList.cs" />
+    <Compile Include="SqlServer\Metadata\MySqlObject.cs" />
+    <Compile Include="Forms\AboutBox.cs" />
+    <Compile Include="Forms\AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Microsoft.Data.ConnectionUI\DataConnectionConfiguration.cs" />
+    <Compile Include="Microsoft.Data.ConnectionUI\IDataConnectionConfiguration.cs" />
+    <Compile Include="Forms\FindForm.cs" />
+    <Compile Include="Forms\FindForm.Designer.cs">
+      <DependentUpon>FindForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Properties\UserSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>UserSettings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServer\MySqlServer.cs" />
+    <Compile Include="SqlServer\MySqlServer.Designer.cs">
+      <DependentUpon>MySqlServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServer\Metadata\MySqlExpressionDependency.cs" />
+    <Compile Include="Util\ControlWriter.cs" />
+    <Compile Include="Util\Parallel.cs" />
+    <Compile Include="Util\TempFolder.cs" />
+    <Compile Include="Util\MyTypeConverter.cs" />
+    <Compile Include="Util\ValueConverter.cs" />
+    <EmbeddedResource Include="DockForms\ChildrenSummaryDockForm.resx">
+      <DependentUpon>ChildrenSummaryDockForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\DatabaseBrowserDockForm.resx">
+      <DependentUpon>DatabaseBrowserDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\DataPreviewDockForm.resx">
+      <DependentUpon>DataPreviewDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\DependencyBrowserDockForm.resx">
+      <DependentUpon>DependencyBrowserDockForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\ObjectDefinitionDockForm.resx">
+      <DependentUpon>ObjectDefinitionDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\OutputDockForm.resx">
+      <DependentUpon>OutputDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\SqlServerPropertiesDockForm.resx">
+      <DependentUpon>SqlServerPropertiesDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\TopObjectsDockForm.resx">
+      <DependentUpon>TopObjectsDockForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\StartDockForm.resx">
+      <DependentUpon>StartDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DockForms\PropertiesDockForm.resx">
+      <DependentUpon>PropertiesDockForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExceptionForm.resx">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindForm.resx">
+      <DependentUpon>FindForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FindFormSimple.resx">
+      <DependentUpon>FindFormSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewDependencyCheckWizard.resx">
+      <DependentUpon>NewDependencyCheckWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainFormMDI.resx">
+      <DependentUpon>MainFormMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewDependencyCheckForm.resx">
+      <DependentUpon>NewDependencyCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options\OptionsAppearancePanel.resx">
+      <DependentUpon>OptionsAppearancePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options\OptionsDatabasePanel.resx">
+      <DependentUpon>OptionsDatabasePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RateAppForm.resx">
+      <DependentUpon>RateAppForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InvalidDatabaseReferencesForm.resx">
+      <DependentUpon>InvalidDatabaseReferencesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RecommendedDatabasesForm.resx">
+      <DependentUpon>RecommendedDatabasesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestFOrm.resx">
+      <DependentUpon>TestFOrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\AppSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>AppSettings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AppSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppSettings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Properties\UserSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserSettings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Collapse_16xLG.png" />
+    <None Include="Resources\Expand_16xLG.png" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\font.png" />
+    <None Include="Resources\DBSchema_12823_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MasterQuery.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBoxList_727_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\base_checkmark_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Expand_large.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Expand_small.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Collapse_large.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Collapse_small.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relation_8467.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DatabaseServer.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sigma_32xMD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddConnection_477_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataConnection-Connected_1061.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DataConnection-NotConnected_1059.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectDatasource_6037.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectDatasource_6037_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dependancy_12861.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_Connect_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_ScalarFunction_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_Synonym_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_TableValueFunction_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_View_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_Trigger_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pending_request_16x16_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_StoredProcedure_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_Table_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_PrimaryKeyConstraint_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_ForeignKeyConstraint_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_CheckConstraint_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_DefaultConstraint_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_StoredProcedureCLR_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_ExtendedStoredProcedure_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TableView_nameonly_263_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_PlanGuide_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_Rule_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_SequenceObject_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_ServiceQueue_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SSMS_UniqueConstraint_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Script16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBoxListChecked_727_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBoxChecked_669_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBoxUnchecked_669_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_run_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Autosizecolumn_269_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database_read-only.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move_to_bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move_to_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Relation_8467_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StatusAnnotations_Warning_16xLG_color.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Office_Excel_Application_16xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ssms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ssms2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_Up_16xSM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow_Down_16xSM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\knewstuff.ico" />
+    <None Include="Resources\knewstuff.png" />
+    <None Include="Resources\base_star_32.png" />
+    <EmbeddedResource Include="SqlServer\Queries\object_definitions.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\table_sizes.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\dependencies.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\expression_dependencies.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\objects.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\server_properties.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\databases.sql" />
+    <EmbeddedResource Include="SqlServer\Queries\server_objects.sql" />
+    <None Include="Resources\StatusAnnotations_Information_16xLG_color.png" />
+    <None Include="Resources\109_AllAnnotations_Warning_16x16_72.png" />
+    <None Include="Resources\109_AllAnnotations_Error_16x16_72.png" />
+    <None Include="Resources\Annotate_Error.ico" />
+    <None Include="Resources\109_AllAnnotations_Error_64x64_72.png" />
+    <None Include="Resources\109_AllAnnotations_Error_256x256.png" />
+    <None Include="Resources\1508_QuestionMarkRed.png" />
+    <None Include="Resources\wizard1.png" />
+    <None Include="Resources\circle_yellow_16_ns.png" />
+    <None Include="Resources\circle_red_16_ns.png" />
+    <None Include="Resources\circle_green_16_ns.png" />
+    <None Include="Resources\Web.png" />
+    <None Include="Resources\wizard.png" />
+    <None Include="Resources\wait_16x16.gif" />
+    <None Include="Resources\StatusAnnotations_Warning_32xLG_color.png" />
+    <None Include="Resources\StatusAnnotations_Critical_16xLG_color.png" />
+    <None Include="Resources\StatusAnnotations_Play_16xLG_color.png" />
+    <None Include="Resources\StatusAnnotations_Complete_and_ok_16xLG_color.png" />
+    <None Include="Resources\112_DownArrowLong_Blue_16x16_72.png" />
+    <None Include="Resources\112_UpArrowLong_Orange_16x16_72.png" />
+    <None Include="Resources\112_UpArrowLong_Orange_32x42_72.png" />
+    <None Include="Resources\112_DownArrowLong_Blue_32x32_72.png" />
+    <None Include="Resources\ram_or_hardware.png" />
+    <None Include="Resources\ram_or_hardware.ico" />
+    <None Include="Resources\sign_out.ico" />
+    <None Include="Resources\sign_out.png" />
+    <None Include="Resources\search.bmp" />
+    <None Include="Resources\window.bmp" />
+    <None Include="Resources\script.ico" />
+    <None Include="Resources\script.png" />
+    <None Include="Resources\objects.ico" />
+    <None Include="Resources\objects.png" />
+    <None Include="Resources\property.png" />
+    <None Include="Resources\property.ico" />
+    <None Include="Resources\stock_sum.png" />
+    <None Include="Resources\stock_sum.ico" />
+    <None Include="Resources\Settings.ico" />
+    <None Include="Resources\search.ico" />
+    <None Include="Resources\ram.ico" />
+    <None Include="Resources\propertiesORoptions.ico" />
+    <None Include="Resources\preferences.ico" />
+    <None Include="Resources\Folder.ico" />
+    <None Include="Resources\eventlogError.ico" />
+    <None Include="Resources\eventlogWarn.ico" />
+    <None Include="Resources\eventlogInfo.ico" />
+    <None Include="Resources\eventlog.ico" />
+    <None Include="Resources\dbs.ico" />
+    <None Include="Resources\db.ico" />
+    <None Include="Resources\PropertiesHS.ico" />
+    <None Include="Resources\PropertiesHS.png" />
+    <None Include="Resources\Properties.png" />
+    <None Include="Resources\sigma_32xMD.ico" />
+    <None Include="Resources\Properties.ico" />
+    <None Include="Resources\r6tWv.gif" />
+    <None Include="Resources\loading2.gif" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\memory.png" />
+    <None Include="Resources\SqlServer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="license.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

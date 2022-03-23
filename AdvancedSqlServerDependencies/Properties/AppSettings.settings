@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AdvancedSqlServerDependencies.Properties" GeneratedClassName="AppSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LastConnectionString" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DependencySearchDirectionTopDown" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LastSearches" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ObjectMatchMethod" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Contains</Value>
+    </Setting>
+    <Setting Name="ForceObjectAndDependencyReload" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="NoObjectSelectedDefaultText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No object selected</Value>
+    </Setting>
+    <Setting Name="LastOption" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ApplicationRated" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastObjectTypes" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SuppressWelcomePage" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
