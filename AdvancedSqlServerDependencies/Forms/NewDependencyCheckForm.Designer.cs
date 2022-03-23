@@ -131,9 +131,9 @@ namespace AdvancedSqlServerDependencies.Forms
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Object name:";
+            this.label1.Text = "Object name contains:";
             // 
             // NewDependencyCheckForm
             // 

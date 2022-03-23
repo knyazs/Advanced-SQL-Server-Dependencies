@@ -92,8 +92,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AeroWizard, Version=2.1.7.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
-      <HintPath>..\packages\AeroWizard.2.1.7\lib\net40\AeroWizard.dll</HintPath>
+    <Reference Include="AeroWizard, Version=2.3.1.0, Culture=neutral, PublicKeyToken=915e74f5d64b8f37, processorArchitecture=MSIL">
+      <HintPath>..\packages\AeroWizard.2.3.1\lib\net40\AeroWizard.dll</HintPath>
     </Reference>
     <Reference Include="ControlzEx, Version=2.0.1.61, Culture=neutral, PublicKeyToken=f08b075e934b7045, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.2.0.1.61\lib\net40\ControlzEx.dll</HintPath>
@@ -141,11 +141,19 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Watermark\CueComboBox.cs" />
-    <Compile Include="Components\Watermark\WatermarkComboBox.cs" />
-    <Compile Include="Components\Watermark\WaterMarkTextBox.cs" />
+    <Compile Include="Components\Watermark\CueComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Watermark\WatermarkComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\Watermark\WaterMarkTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomOutput\MyOutputMessage.cs" />
-    <Compile Include="DockForms\TopObjectsDockForm.cs" />
+    <Compile Include="DockForms\TopObjectsDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\TopObjectsDockForm.Designer.cs">
       <DependentUpon>TopObjectsDockForm.cs</DependentUpon>
     </Compile>
@@ -153,92 +161,136 @@
     <Compile Include="SqlServer\Metadata\MySqlDatabase.cs" />
     <Compile Include="SqlServer\Metadata\MySqlServerObject.cs" />
     <Compile Include="SqlServer\QueryReader.cs" />
-    <Compile Include="DockForms\SqlServerPropertiesDockForm.cs" />
+    <Compile Include="DockForms\SqlServerPropertiesDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\SqlServerPropertiesDockForm.Designer.cs">
       <DependentUpon>SqlServerPropertiesDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\StartDockForm.cs" />
+    <Compile Include="DockForms\StartDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\StartDockForm.Designer.cs">
       <DependentUpon>StartDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FindFormSimple.cs" />
+    <Compile Include="Forms\FindFormSimple.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FindFormSimple.Designer.cs">
       <DependentUpon>FindFormSimple.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewDependencyCheckWizard.cs" />
+    <Compile Include="Forms\NewDependencyCheckWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\NewDependencyCheckWizard.Designer.cs">
       <DependentUpon>NewDependencyCheckWizard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Options\OptionsAppearancePanel.cs" />
+    <Compile Include="Forms\Options\OptionsAppearancePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\Options\OptionsAppearancePanel.Designer.cs">
       <DependentUpon>OptionsAppearancePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Options\OptionsDatabasePanel.cs" />
+    <Compile Include="Forms\Options\OptionsDatabasePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\Options\OptionsDatabasePanel.Designer.cs">
       <DependentUpon>OptionsDatabasePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Options\OptionsForm.cs" />
+    <Compile Include="Forms\Options\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Options\OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ProgressForm.cs" />
+    <Compile Include="Forms\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\ProgressForm.Designer.cs">
       <DependentUpon>ProgressForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RateAppForm.cs" />
+    <Compile Include="Forms\RateAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\RateAppForm.Designer.cs">
       <DependentUpon>RateAppForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InvalidDatabaseReferencesForm.cs" />
+    <Compile Include="Forms\InvalidDatabaseReferencesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\InvalidDatabaseReferencesForm.Designer.cs">
       <DependentUpon>InvalidDatabaseReferencesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TestFOrm.cs" />
+    <Compile Include="Forms\TestFOrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\TestFOrm.Designer.cs">
       <DependentUpon>TestFOrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\ChildrenSummaryDockForm.cs" />
+    <Compile Include="DockForms\ChildrenSummaryDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\ChildrenSummaryDockForm.Designer.cs">
       <DependentUpon>ChildrenSummaryDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\DatabaseBrowserDockForm.cs" />
+    <Compile Include="DockForms\DatabaseBrowserDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\DatabaseBrowserDockForm.Designer.cs">
       <DependentUpon>DatabaseBrowserDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\DataPreviewDockForm.cs" />
+    <Compile Include="DockForms\DataPreviewDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\DataPreviewDockForm.Designer.cs">
       <DependentUpon>DataPreviewDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\DependencyBrowserDockForm.cs" />
+    <Compile Include="DockForms\DependencyBrowserDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\DependencyBrowserDockForm.Designer.cs">
       <DependentUpon>DependencyBrowserDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\ObjectDefinitionDockForm.cs" />
+    <Compile Include="DockForms\ObjectDefinitionDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\ObjectDefinitionDockForm.Designer.cs">
       <DependentUpon>ObjectDefinitionDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\OutputDockForm.cs" />
+    <Compile Include="DockForms\OutputDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\OutputDockForm.Designer.cs">
       <DependentUpon>OutputDockForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DockForms\PropertiesDockForm.cs" />
+    <Compile Include="DockForms\PropertiesDockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DockForms\PropertiesDockForm.Designer.cs">
       <DependentUpon>PropertiesDockForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Excel.cs" />
-    <Compile Include="Forms\ExceptionForm.cs" />
+    <Compile Include="Forms\ExceptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\ExceptionForm.Designer.cs">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainFormMDI.cs" />
+    <Compile Include="Forms\MainFormMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\MainFormMDI.Designer.cs">
       <DependentUpon>MainFormMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewDependencyCheckForm.cs" />
+    <Compile Include="Forms\NewDependencyCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\NewDependencyCheckForm.Designer.cs">
       <DependentUpon>NewDependencyCheckForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RecommendedDatabasesForm.cs" />
+    <Compile Include="Forms\RecommendedDatabasesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\RecommendedDatabasesForm.Designer.cs">
       <DependentUpon>RecommendedDatabasesForm.cs</DependentUpon>
     </Compile>
@@ -248,13 +300,17 @@
     <Compile Include="Progress\LongRunningOperationManager.cs" />
     <Compile Include="MySqlObjects\MySqlObjectLists\MySqlObjectList.cs" />
     <Compile Include="SqlServer\Metadata\MySqlObject.cs" />
-    <Compile Include="Forms\AboutBox.cs" />
+    <Compile Include="Forms\AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Microsoft.Data.ConnectionUI\DataConnectionConfiguration.cs" />
     <Compile Include="Microsoft.Data.ConnectionUI\IDataConnectionConfiguration.cs" />
-    <Compile Include="Forms\FindForm.cs" />
+    <Compile Include="Forms\FindForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FindForm.Designer.cs">
       <DependentUpon>FindForm.cs</DependentUpon>
     </Compile>
@@ -266,7 +322,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>UserSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SqlServer\MySqlServer.cs" />
+    <Compile Include="SqlServer\MySqlServer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SqlServer\MySqlServer.Designer.cs">
       <DependentUpon>MySqlServer.cs</DependentUpon>
     </Compile>

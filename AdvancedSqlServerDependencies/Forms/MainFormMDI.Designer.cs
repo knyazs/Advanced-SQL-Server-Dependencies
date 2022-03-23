@@ -377,7 +377,7 @@ namespace AdvancedSqlServerDependencies.Forms
             this.tOOLSToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.tOOLSToolStripMenuItem.Name = "tOOLSToolStripMenuItem";
-            this.tOOLSToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.tOOLSToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.tOOLSToolStripMenuItem.Text = "&TOOLS";
             // 
             // optionsToolStripMenuItem
@@ -431,6 +431,7 @@ namespace AdvancedSqlServerDependencies.Forms
             this.Name = "MainFormMdi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Advanced SQL Server Dependencies";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainFormMdi_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
